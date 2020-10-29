@@ -1,0 +1,37 @@
+{
+  "name": "@hallettj/eslint-plugin-ts-graphql",
+  "version": "0.1.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "license": "MIT",
+  "repository": "",
+  "files": [
+    "dist",
+    "!*.tsbuildinfo"
+  ],
+  "scripts": {
+    "prepublishOnly": "rimraf dist && yarn tsc",
+    "test": "jest",
+    "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.2",
+    "@typescript-eslint/experimental-utils": "^2.29.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.163",
+    "@types/node": "^14.14.6",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^7.12.1",
+    "eslint-snapshot-test": "^3.0.0",
+    "jest": "^26.6.1",
+    "lodash": "^4.17.20",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.3",
+    "typescript": "^4.0.5"
+  },
+  "engines": {
+    "node": ">=12.9.0"
+  }
+}

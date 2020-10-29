@@ -1,0 +1,385 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic.ts 1`] = `
+Object {
+  "fixedOutput": "import { gql } from \\"gql\\";
+
+gql\`
+  query Thing {
+    something
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>;
+",
+  "lintMessages": Array [
+    Object {
+      "column": 1,
+      "endColumn": 2,
+      "endLine": 7,
+      "fix": Object {
+        "range": Array [
+          68,
+          68,
+        ],
+        "text": " as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>",
+      },
+      "line": 3,
+      "message": "You must cast gql tags with the generated type",
+      "messageId": "mustUseAs",
+      "nodeType": "TaggedTemplateExpression",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+  ],
+  "snapshot": "
+import { gql } from \\"gql\\";
+
+gql\`
+~~~~    [You must cast gql tags with the generated type]
+  query Thing {
+~~~~~~~~~~~~~~~    [You must cast gql tags with the generated type]
+    something
+~~~~~~~~~~~~~    [You must cast gql tags with the generated type]
+  }
+~~~    [You must cast gql tags with the generated type]
+\`;
+~    [You must cast gql tags with the generated type]
+",
+}
+`;
+
+exports[`basic-fixed.ts 1`] = `
+Object {
+  "lintMessages": Array [],
+  "snapshot": "
+import { gql } from \\"gql\\";
+
+gql\`
+  query Thing {
+    something
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>;
+",
+}
+`;
+
+exports[`fragment.ts 1`] = `
+Object {
+  "fixedOutput": "import { gql } from \\"gql\\";
+
+const fields = gql\`
+  fragment Fields on Thing {
+    id
+    something
+  }
+\`
+
+gql\`
+  \${fields}
+  query GetThing {
+    ...Fields
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/get-thing\\").GetThing,
+  import(\\"./__generated__/get-thing\\").GetThingVariables
+>
+",
+  "lintMessages": Array [
+    Object {
+      "column": 1,
+      "endColumn": 2,
+      "endLine": 15,
+      "fix": Object {
+        "range": Array [
+          160,
+          160,
+        ],
+        "text": " as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/get-thing\\").GetThing,
+  import(\\"./__generated__/get-thing\\").GetThingVariables
+>",
+      },
+      "line": 10,
+      "message": "You must cast gql tags with the generated type",
+      "messageId": "mustUseAs",
+      "nodeType": "TaggedTemplateExpression",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+  ],
+  "snapshot": "
+import { gql } from \\"gql\\";
+
+const fields = gql\`
+  fragment Fields on Thing {
+    id
+    something
+  }
+\`
+
+gql\`
+~~~~    [You must cast gql tags with the generated type]
+  \${fields}
+~~~~~~~~~~~    [You must cast gql tags with the generated type]
+  query GetThing {
+~~~~~~~~~~~~~~~~~~    [You must cast gql tags with the generated type]
+    ...Fields
+~~~~~~~~~~~~~    [You must cast gql tags with the generated type]
+  }
+~~~    [You must cast gql tags with the generated type]
+\`
+~    [You must cast gql tags with the generated type]
+",
+}
+`;
+
+exports[`invalid-type-assertion.ts 1`] = `
+Object {
+  "fixedOutput": "import { gql } from \\"gql\\";
+
+gql\`
+  query Thing {
+    something
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>;
+
+gql\`
+  query Thing {
+    something
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>;
+
+gql\`
+  query Thing {
+    something
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>;
+",
+  "lintMessages": Array [
+    Object {
+      "column": 6,
+      "endColumn": 2,
+      "endLine": 10,
+      "fix": Object {
+        "range": Array [
+          72,
+          173,
+        ],
+        "text": "import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>",
+      },
+      "line": 7,
+      "message": "The type assertion on a gql tag is not in the expected format",
+      "messageId": "mustUseAsCorrectly",
+      "nodeType": "TSTypeReference",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+    Object {
+      "column": 6,
+      "endColumn": 2,
+      "endLine": 19,
+      "fix": Object {
+        "range": Array [
+          220,
+          379,
+        ],
+        "text": "import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>",
+      },
+      "line": 16,
+      "message": "The type assertion on a gql tag is not in the expected format",
+      "messageId": "mustUseAsCorrectly",
+      "nodeType": "TSImportType",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+    Object {
+      "column": 6,
+      "endColumn": 2,
+      "endLine": 28,
+      "fix": Object {
+        "range": Array [
+          426,
+          586,
+        ],
+        "text": "import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+  import(\\"./__generated__/thing\\").Thing,
+  import(\\"./__generated__/thing\\").ThingVariables
+>",
+      },
+      "line": 25,
+      "message": "The type assertion on a gql tag is not in the expected format",
+      "messageId": "mustUseAsCorrectly",
+      "nodeType": "TSImportType",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+  ],
+  "snapshot": "
+import { gql } from \\"gql\\";
+
+gql\`
+  query Thing {
+    something
+  }
+\` as SomeType<
+     ~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+  import(\\"./__generated__/thing\\").Thing,
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+  import(\\"./__generated__/thing\\").ThingVariables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+>;
+~    [The type assertion on a gql tag is not in the expected format]
+
+gql\`
+  query Thing {
+    something
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+  import(\\"./__generated__/thing\\").WrongThing,
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+  import(\\"./__generated__/thing\\").ThingVariables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+>;
+~    [The type assertion on a gql tag is not in the expected format]
+
+gql\`
+  query Thing {
+    something
+  }
+\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+  import(\\"./__generated__/thing\\").Thing,
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+  import(\\"./__generated__/wrong-thing\\").ThingVariables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
+>;
+~    [The type assertion on a gql tag is not in the expected format]
+",
+}
+`;
+
+exports[`multiple-operations.ts 1`] = `
+Object {
+  "lintMessages": Array [
+    Object {
+      "column": 1,
+      "endColumn": 2,
+      "endLine": 10,
+      "line": 3,
+      "message": "GraphQL documents must have only one operation",
+      "messageId": "singleOperation",
+      "nodeType": "TaggedTemplateExpression",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+  ],
+  "snapshot": "
+import { gql } from \\"gql\\";
+
+gql\`
+~~~~    [GraphQL documents must have only one operation]
+  query{
+~~~~~~~~    [GraphQL documents must have only one operation]
+    something
+~~~~~~~~~~~~~    [GraphQL documents must have only one operation]
+  }
+~~~    [GraphQL documents must have only one operation]
+  query Thing {
+~~~~~~~~~~~~~~~    [GraphQL documents must have only one operation]
+    something
+~~~~~~~~~~~~~    [GraphQL documents must have only one operation]
+  }
+~~~    [GraphQL documents must have only one operation]
+\`;
+~    [GraphQL documents must have only one operation]
+",
+}
+`;
+
+exports[`no-name.ts 1`] = `
+Object {
+  "lintMessages": Array [
+    Object {
+      "column": 1,
+      "endColumn": 2,
+      "endLine": 7,
+      "line": 3,
+      "message": "GraphQL operations must have a name",
+      "messageId": "mustBeNamed",
+      "nodeType": "TaggedTemplateExpression",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+  ],
+  "snapshot": "
+import { gql } from \\"@ts-gql/tag\\";
+
+gql\`
+~~~~    [GraphQL operations must have a name]
+  query {
+~~~~~~~~~    [GraphQL operations must have a name]
+    something
+~~~~~~~~~~~~~    [GraphQL operations must have a name]
+  }
+~~~    [GraphQL operations must have a name]
+\`;
+~    [GraphQL operations must have a name]
+",
+}
+`;
+
+exports[`parse-error.ts 1`] = `
+Object {
+  "lintMessages": Array [
+    Object {
+      "column": 1,
+      "endColumn": 2,
+      "endLine": 7,
+      "line": 3,
+      "message": "GraphQL documents must either have a single operation or a single fragment",
+      "messageId": "operationOrSingleFragment",
+      "nodeType": "TaggedTemplateExpression",
+      "ruleId": "gql-type-assertion",
+      "severity": 2,
+    },
+  ],
+  "snapshot": "
+import { gql } from \\"@ts-gql/tag\\";
+
+gql\`
+~~~~    [GraphQL documents must either have a single operation or a single fragment]
+  que Thing {
+~~~~~~~~~~~~~    [GraphQL documents must either have a single operation or a single fragment]
+    something
+~~~~~~~~~~~~~    [GraphQL documents must either have a single operation or a single fragment]
+  }
+~~~    [GraphQL documents must either have a single operation or a single fragment]
+\`;
+~    [GraphQL documents must either have a single operation or a single fragment]
+",
+}
+`;

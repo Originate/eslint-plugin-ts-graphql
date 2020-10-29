@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ES2020", // We're targeting Node v12.9.0 or later
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist/esm",
+    "declaration": true,
+    "sourceMap": true
+  },
+  "include": ["src"]
+}
