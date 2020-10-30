@@ -11,7 +11,7 @@ import { dasherize } from "./utils";
 // TODO:
 const createRule = ESLintUtils.RuleCreator(
   (name) =>
-    `https://github.com/Thinkmill/ts-gql/blob/master/packages/eslint-plugin/docs/rules/${name}.md`
+    `https://github.com/Originate/eslint-plugin-ts-graphql/blob/master/docs/rules/${name}.md`
 );
 
 const messages = {
