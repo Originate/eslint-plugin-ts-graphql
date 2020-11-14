@@ -24,7 +24,7 @@ This plugin is based on code from [@ts-gql/eslint-plugin][].
 
 Install:
 
-    $ yarn add --dev @hallettj/eslint-plugin-ts-graphql
+    $ yarn add --dev @originate/eslint-plugin-ts-graphql
 
 Configure `eslintrc.js`:
 
@@ -36,9 +36,9 @@ module.exports = {
   env: {
     node: true,
   },
-  plugins: ["@hallettj/ts-graphql"],
+  plugins: ["@originate/ts-graphql"],
   rules: {
-    "@hallettj/ts-graphql/gql-type-assertion": "error",
+    "@originate/ts-graphql/gql-type-assertion": "error",
   },
 };
 ```
