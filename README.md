@@ -77,3 +77,9 @@ export const getRecipesQuery = gql`
   import("./__generated__/get-recipes").getRecipesVariables
 >;
 ```
+
+## Automated releases
+
+This project uses an automated release system which requires that pull requests
+be merged in a special way. Please read the [contributing
+guidelines](./CONTRIBUTING.md) before merging pull requests.
