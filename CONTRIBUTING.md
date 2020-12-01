@@ -47,8 +47,9 @@ When commits are pushed to `master` one of the following happens:
   incremented (e.g. `v1.0.1` changes to `v1.0.2`), and the new version is
   published.
 - If none of the above applies then nothing special happens - we don't create
-  a tag or publish a release if there are now new features, fixes, or breaking
+  a tag or publish a release if there are no new features, fixes, or breaking
   changes.
 
 Semantic Release also generates a change log for each release based on the
-specially-formatted commit messages.
+specially-formatted commit messages. You can see these on the Github releases
+page.
