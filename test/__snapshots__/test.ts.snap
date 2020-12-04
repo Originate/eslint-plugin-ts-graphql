@@ -8,10 +8,7 @@ gql\`
   query Thing {
     something
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->;
+\` as import(\\"./__generated__/thing\\").ThingDocument;
 ",
   "lintMessages": Array [
     Object {
@@ -23,10 +20,7 @@ gql\`
           68,
           68,
         ],
-        "text": " as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->",
+        "text": " as import(\\"./__generated__/thing\\").ThingDocument",
       },
       "line": 3,
       "message": "You must cast gql tags with the generated type",
@@ -63,10 +57,7 @@ gql\`
   query Thing {
     something
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->;
+\` as import(\\"./__generated__/thing\\").ThingDocument;
 ",
 }
 `;
@@ -87,10 +78,7 @@ gql\`
   query GetThing {
     ...Fields
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/get-thing\\").GetThing,
-  import(\\"./__generated__/get-thing\\").GetThingVariables
->
+\` as import(\\"./__generated__/get-thing\\").GetThingDocument
 ",
   "lintMessages": Array [
     Object {
@@ -102,10 +90,7 @@ gql\`
           160,
           160,
         ],
-        "text": " as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/get-thing\\").GetThing,
-  import(\\"./__generated__/get-thing\\").GetThingVariables
->",
+        "text": " as import(\\"./__generated__/get-thing\\").GetThingDocument",
       },
       "line": 10,
       "message": "You must cast gql tags with the generated type",
@@ -149,43 +134,31 @@ gql\`
   query Thing {
     something
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->;
+\` as import(\\"./__generated__/thing\\").ThingDocument;
 
 gql\`
   query Thing {
     something
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->;
+\` as import(\\"./__generated__/thing\\").ThingDocument;
 
 gql\`
   query Thing {
     something
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->;
+\` as import(\\"./__generated__/thing\\").ThingDocument;
 ",
   "lintMessages": Array [
     Object {
       "column": 6,
-      "endColumn": 2,
-      "endLine": 10,
+      "endColumn": 14,
+      "endLine": 7,
       "fix": Object {
         "range": Array [
           72,
-          173,
+          80,
         ],
-        "text": "import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->",
+        "text": "import(\\"./__generated__/thing\\").ThingDocument",
       },
       "line": 7,
       "message": "The type assertion on a gql tag is not in the expected format",
@@ -196,19 +169,16 @@ gql\`
     },
     Object {
       "column": 6,
-      "endColumn": 2,
-      "endLine": 19,
+      "endColumn": 48,
+      "endLine": 13,
       "fix": Object {
         "range": Array [
-          220,
-          379,
+          127,
+          169,
         ],
-        "text": "import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->",
+        "text": "import(\\"./__generated__/thing\\").ThingDocument",
       },
-      "line": 16,
+      "line": 13,
       "message": "The type assertion on a gql tag is not in the expected format",
       "messageId": "mustUseAsCorrectly",
       "nodeType": "TSImportType",
@@ -217,19 +187,16 @@ gql\`
     },
     Object {
       "column": 6,
-      "endColumn": 2,
-      "endLine": 28,
+      "endColumn": 57,
+      "endLine": 19,
       "fix": Object {
         "range": Array [
-          426,
-          586,
+          216,
+          267,
         ],
-        "text": "import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-  import(\\"./__generated__/thing\\").Thing,
-  import(\\"./__generated__/thing\\").ThingVariables
->",
+        "text": "import(\\"./__generated__/thing\\").ThingDocument",
       },
-      "line": 25,
+      "line": 19,
       "message": "The type assertion on a gql tag is not in the expected format",
       "messageId": "mustUseAsCorrectly",
       "nodeType": "TSImportType",
@@ -244,40 +211,22 @@ gql\`
   query Thing {
     something
   }
-\` as SomeType<
-     ~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
-  import(\\"./__generated__/thing\\").Thing,
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
-  import(\\"./__generated__/thing\\").ThingVariables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
->;
-~    [The type assertion on a gql tag is not in the expected format]
+\` as SomeType;
+     ~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
 
 gql\`
   query Thing {
     something
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
-  import(\\"./__generated__/thing\\").WrongThing,
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
-  import(\\"./__generated__/thing\\").ThingVariables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
->;
-~    [The type assertion on a gql tag is not in the expected format]
+\` as import(\\"./__generated__/thing\\").WrongThing;
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
 
 gql\`
   query Thing {
     something
   }
-\` as import(\\"@graphql-typed-document-node/core\\").TypedDocumentNode<
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
-  import(\\"./__generated__/thing\\").Thing,
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
-  import(\\"./__generated__/wrong-thing\\").ThingVariables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
->;
-~    [The type assertion on a gql tag is not in the expected format]
+\` as import(\\"./__generated__/wrong-thing\\").ThingDocument;
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    [The type assertion on a gql tag is not in the expected format]
 ",
 }
 `;
