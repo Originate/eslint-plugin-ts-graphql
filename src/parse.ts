@@ -11,11 +11,12 @@ const operationNameRegex = /^\s*(query|mutation|subscription|fragment)[\s\r\n]*(
 // This is not a real parser - just a quick-and-dirty regex.
 function parseOperationNames(node: TSESTree.TemplateLiteral): QuickDocument[] {
   return node.quasis.flatMap((quasi) => {
-    const matches = operationNameRegex[Symbol.matchAll](quasi.value.cooked);
-    return Array.from(matches).map(([, operationType, operationName]) => ({
-      operationName,
-      operationType,
-    }));
+    const ops: QuickDocument[] = [];
+    let match: RegExpExecArray | null;
+    while ((match = operationNameRegex.exec(quasi.value.cooked)) !== null) {
+      ops.push({ operationName: match[2], operationType: match[1] });
+    }
+    return ops;
   });
 }
 

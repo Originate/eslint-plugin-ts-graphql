@@ -10,7 +10,8 @@
     "!*.tsbuildinfo"
   ],
   "scripts": {
-    "prepublishOnly": "rimraf dist && yarn tsc",
+    "prepublishOnly": "yarn build && yarn test",
+    "build": "rimraf dist && yarn tsc",
     "test": "jest",
     "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"
   },
