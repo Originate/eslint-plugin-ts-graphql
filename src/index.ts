@@ -54,15 +54,9 @@ function addNameToGqlTag(
 
   const name = document.operationName;
   const pathname = `./__generated__/${dasherize(name)}`;
-  const sanitizedPathname = JSON.stringify(pathname);
+  const documentTypeName = `${name}Document`;
 
-  const typedDocumentNodePackageName = "@graphql-typed-document-node/core";
-  const type = `import(${JSON.stringify(
-    typedDocumentNodePackageName
-  )}).TypedDocumentNode<
-  import(${sanitizedPathname}).${name},
-  import(${sanitizedPathname}).${name}Variables
->`;
+  const type = `import(${JSON.stringify(pathname)}).${documentTypeName}`;
 
   // Add a type assertion if there isn't one.
   if (node.parent?.type !== "TSAsExpression") {
@@ -82,40 +76,12 @@ function addNameToGqlTag(
       type: "TSImportType",
       parameter: {
         literal: {
-          value: typedDocumentNodePackageName,
+          value: pathname,
         },
       },
       qualifier: {
         type: "Identifier",
-        name: "TypedDocumentNode",
-      },
-      typeParameters: {
-        params: [
-          {
-            type: "TSImportType",
-            parameter: {
-              literal: {
-                value: pathname,
-              },
-            },
-            qualifier: {
-              type: "Identifier",
-              name: name,
-            },
-          },
-          {
-            type: "TSImportType",
-            parameter: {
-              literal: {
-                value: pathname,
-              },
-            },
-            qualifier: {
-              type: "Identifier",
-              name: `${name}Variables`,
-            },
-          },
-        ],
+        name: documentTypeName,
       },
     })
   ) {
