@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "ES2020", // We're targeting Node v12.9.0 or later
+    "target": "ES2019", // We're targeting Node v12.9.0 or later
     "module": "ES2020",
     "moduleResolution": "node",
     "strict": true,
